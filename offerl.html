@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Letter Management</title>
+    <link rel="stylesheet" href="offerl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo">
+		<a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i> <!-- Notification bell icon -->
+                <span class="notification-count">3</span> <!-- Notification count -->
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i> <!-- Profile icon -->
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">settings</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+                        <!-- ✅ Dark Mode Toggle Button -->
+            <div class="icon" id="darkModeToggle" title="Toggle Dark Mode">
+                <i id="moonIcon" class="fas fa-moon"></i>
+                <i id="sunIcon" class="fas fa-sun" style="display: none;"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="i3.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+             <!-- Offer Letter Form -->
+            <div class="offer-form">
+                <h2>Issue New Offer Letter</h2>
+                <form>
+                    <label for="candidate-name">Candidate Name:</label>
+                    <input type="text" id="candidate-name" required>
+
+                    <label for="job-role">Job Role:</label>
+                    <input type="text" id="job-role" required>
+
+                    <label for="salary">Salary Package (₹):</label>
+                    <input type="text" id="salary" required>
+
+                    <label for="responsibilities">Responsibilities:</label>
+                    <textarea id="responsibilities" required></textarea>
+
+                    <label for="joining-date">Joining Date:</label>
+                    <input type="date" id="joining-date" required>
+
+                    <button type="submit" class="submit-btn">Generate Offer Letter</button>
+                </form>
+            </div>
+
+            <!-- Offer Letter List -->
+            <div class="offer-list">
+                <h2>Issued Offer Letters</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Candidate Name</th>
+                            <th>Job Role</th>
+                            <th>Salary (₹)</th>
+                            <th>Joining Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Software Engineer</td>
+                            <td>₹75,000</td>
+                            <td>April 15, 2025</td>
+                            <td>
+                                <button class="edit-btn">Edit</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Toggle dropdown function
+        function toggleDropdown() {
+            var dropdown = document.getElementById("adminDropdown");
+            dropdown.classList.toggle("show");
+        
+            // Close notifications if open
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            if (notificationDropdown.classList.contains("show")) {
+                notificationDropdown.classList.remove("show");
+            }
+        }
+        
+        // Toggle notification dropdown
+        function toggleNotificationDropdown() {
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            notificationDropdown.classList.toggle("show");
+        
+            // Close admin dropdown if open
+            var adminDropdown = document.getElementById("adminDropdown");
+            if (adminDropdown.classList.contains("show")) {
+                adminDropdown.classList.remove("show");
+            }
+        }
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener("click", function(event) {
+            var isClickInsideAdmin = event.target.closest(".admin-container");
+            var isClickInsideNotification = event.target.closest(".notification-button");
+        
+            if (!isClickInsideAdmin) {
+                document.getElementById("adminDropdown").classList.remove("show");
+            }
+        
+            if (!isClickInsideNotification) {
+                document.getElementById("notificationDropdown").classList.remove("show");
+            }
+        });
+       </script>
+                  <script src="Dmode.js"></script>
+</body>
+</html>

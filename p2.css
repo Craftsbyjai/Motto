@@ -1,0 +1,340 @@
+/* Reset default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.banner {
+    background-color: #f1c40f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .banner {
+    background-color: #333;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.search-container {
+    flex: 1;
+    text-align: center;
+}
+
+.search-container input {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .search-container input {
+    background-color: #222;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+.admin-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.notification-button, .admin-button, #darkModeToggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+body.dark-mode .notification-button, body.dark-mode .admin-button, body.dark-mode #darkModeToggle {
+    color: #bbb;
+}
+
+.notification-button .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+body.dark-mode .notification-button .notification-count {
+    color: #fff;
+}
+
+.admin-button:hover, .notification-button:hover, #darkModeToggle:hover {
+    color: #3498db;
+}
+
+body.dark-mode .admin-button:hover, body.dark-mode .notification-button:hover, body.dark-mode #darkModeToggle:hover {
+    color: #89c2eb;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1001;
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .dropdown {
+    background-color: #333;
+    box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s;
+}
+
+body.dark-mode .dropdown a {
+    color: #e0e0e0;
+}
+
+.dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+body.dark-mode .dropdown a:hover {
+    background-color: #444;
+}
+
+.show {
+    display: block;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    overflow-y: auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1a1a1a;
+    color: #bbb;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode .sidebar ul li a {
+    color: #bbb;
+}
+
+.sidebar ul li a:hover {
+    background-color: #1a252f;
+}
+
+body.dark-mode .sidebar ul li a:hover {
+    background-color: #222;
+}
+
+.container {
+    display: flex;
+    margin-top: 60px;
+}
+
+.settings-content {
+    flex-grow: 1;
+    margin-left: 250px;
+    padding: 20px;
+    overflow-y: auto;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .settings-content {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+h1 {
+    color: #333;
+    transition: color 0.3s;
+}
+
+body.dark-mode h1 {
+    color: #e0e0e0;
+}
+
+.settings-section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .settings-section {
+    background: #222;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.settings-card {
+    background: #fafafa;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+body.dark-mode .settings-card {
+    background: #333;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    max-width: 200px;
+    display: inline-block;
+    margin-top: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode button {
+    background-color: #5c8bc2;
+    color: #e0e0e0;
+}
+
+body.dark-mode button:hover {
+    background-color: #4a71a2;
+}
+
+.logout-btn {
+    background-color: #ff9800;
+}
+
+body.dark-mode .logout-btn {
+    background-color: #ffb74d;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+}
+
+body.dark-mode .delete-btn {
+    background-color: #e57373;
+}
+
+.export-btn, .reset-btn {
+    background-color: #17a2b8;
+}
+
+body.dark-mode .export-btn, body.dark-mode .reset-btn {
+    background-color: #4dd0e1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode table {
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    transition: border-color 0.3s;
+}
+
+body.dark-mode table th, body.dark-mode table td {
+    border-color: #555;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode table th {
+    background-color: #5c8bc2;
+    color: #e0e0e0;
+}

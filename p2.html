@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Management</title>
+    <link rel="stylesheet" href="p2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">
+            <a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i>
+                <span class="notification-count">3</span>
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="#profile">Profile</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+            <button id="darkModeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="interview.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+
+        <main class="settings-content">
+            <section class="settings-section">
+                <h2>Security Settings</h2>
+                <div class="settings-card">
+                    <h3>Change Password</h3>
+                    <form action="#" method="POST">
+                        <label>Current Password:</label>
+                        <input type="password" name="current_password" required>
+                        <label>New Password:</label>
+                        <input type="password" name="new_password" required>
+                        <label>Confirm New Password:</label>
+                        <input type="password" name="confirm_new_password" required>
+                        <button type="submit">Update Password</button>
+                    </form>
+                </div>
+                <div class="settings-card">
+                    <h3>Manage Logged-in Devices</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Device</th>
+                                <th>Location</th>
+                                <th>Last Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Windows PC</td>
+                                <td>New York, USA</td>
+                                <td>2 hours ago</td>
+                                <td><button class="logout-btn">Log Out</button></td>
+                            </tr>
+                            <tr>
+                                <td>iPhone 14</td>
+                                <td>Los Angeles, USA</td>
+                                <td>Yesterday</td>
+                                <td><button class="logout-btn">Log Out</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="settings-section">
+                <h2>Privacy Settings</h2>
+                <div class="settings-card">
+                    <h3>Delete Account</h3>
+                    <p>Deleting your account will erase all your data permanently. This action cannot be undone.</p>
+                    <button class="delete-btn">Delete My Account</button>
+                </div>
+            </section>
+            <section class="settings-section">
+                <h2>Backup & Data Management</h2>
+                <div class="settings-card">
+                    <h3>Export Account Data</h3>
+                    <button class="export-btn">Export Data</button>
+                </div>
+                <div class="settings-card">
+                    <h3>Reset to Default Settings</h3>
+                    <button class="reset-btn">Reset Settings</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function toggleDropdown() {
+            document.getElementById("adminDropdown").classList.toggle("show");
+        }
+        function toggleNotificationDropdown() {
+            document.getElementById("notificationDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.admin-button')) {
+                var dropdowns = document.getElementsByClassName("dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    </script>
+</body>
+</html>

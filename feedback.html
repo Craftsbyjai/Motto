@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Feedback</title>
+    <link rel="stylesheet" href="feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo">
+		<a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i>
+                <span class="notification-count">3</span>
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i> <!-- Profile icon -->
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">settings</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+                        <!-- ✅ Dark Mode Toggle Button -->
+            <div class="icon" id="darkModeToggle" title="Toggle Dark Mode">
+                <i id="moonIcon" class="fas fa-moon"></i>
+                <i id="sunIcon" class="fas fa-sun" style="display: none;"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="i3.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Interview Feedback</h1>
+                <p>Review and manage feedback for candidates.</p>
+            </header>
+            
+            <!-- Filter and Sort Section -->
+            <div class="filter-sort-section">
+                <label for="filter-role">Filter by Role:</label>
+                <select id="filter-role">
+                  <option value="">All</option>
+                  <option value="Developer">Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Manager">Manager</option>
+                </select>
+            
+                <label for="filter-rating">Filter by Rating:</label>
+                <select id="filter-rating">
+                  <option value="">All</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+            
+                <label for="filter-interviewer">Filter by Interviewer:</label>
+                <select id="filter-interviewer">
+                  <option value="">All</option>
+                  <option value="John">John</option>
+                  <option value="Jane">Jane</option>
+                  <option value="Mike">Mike</option>
+                  <option value="Susan">Susan</option>
+                  <option value="Rachel">Rachel</option>
+                </select>
+            
+                <label for="sort-by">Sort by:</label>
+                <select id="sort-by">
+                  <option value="">None</option>
+                  <option value="name">Name</option>
+                  <option value="role">Role</option>
+                  <option value="rating">Rating</option>
+                </select>
+              </div>
+            
+              <table class="feedback-table">
+                <thead>
+                  <tr>
+                    <th>Candidate Name</th>
+                    <th>Role</th>
+                    <th>Interviewer</th>
+                    <th>Feedback</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Alice</td>
+                    <td>Developer</td>
+                    <td>John</td>
+                    <td>Strong understanding of React.</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td>Bob</td>
+                    <td>Designer</td>
+                    <td>Jane</td>
+                    <td>Creative but weak UX skills.</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Charlie</td>
+                    <td>Manager</td>
+                    <td>Mike</td>
+                    <td>Good leadership but needs to improve communication.</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <td>Diana</td>
+                    <td>Developer</td>
+                    <td>Susan</td>
+                    <td>Excellent problem-solving skills.</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td>Eva</td>
+                    <td>Designer</td>
+                    <td>Rachel</td>
+                    <td>Solid design portfolio and UX thinking.</td>
+                    <td>4</td>
+                  </tr>
+                </tbody>
+              </table>
+        </main>
+    </div>
+    
+    <script>
+        // Toggle dropdown function
+        function toggleDropdown() {
+            var dropdown = document.getElementById("adminDropdown");
+            dropdown.classList.toggle("show");
+        
+            // Close notifications if open
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            if (notificationDropdown.classList.contains("show")) {
+                notificationDropdown.classList.remove("show");
+            }
+        }
+        
+        // Toggle notification dropdown
+        function toggleNotificationDropdown() {
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            notificationDropdown.classList.toggle("show");
+        
+            // Close admin dropdown if open
+            var adminDropdown = document.getElementById("adminDropdown");
+            if (adminDropdown.classList.contains("show")) {
+                adminDropdown.classList.remove("show");
+            }
+        }
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener("click", function(event) {
+            var isClickInsideAdmin = event.target.closest(".admin-container");
+            var isClickInsideNotification = event.target.closest(".notification-button");
+        
+            if (!isClickInsideAdmin) {
+                document.getElementById("adminDropdown").classList.remove("show");
+            }
+        
+            if (!isClickInsideNotification) {
+                document.getElementById("notificationDropdown").classList.remove("show");
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+      const roleFilter = document.getElementById("filter-role");
+      const ratingFilter = document.getElementById("filter-rating");
+      const interviewerFilter = document.getElementById("filter-interviewer");
+      const sortSelect = document.getElementById("sort-by");
+      const table = document.querySelector(".feedback-table");
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+
+      function filterAndSort() {
+        const selectedRole = roleFilter.value.toLowerCase();
+        const selectedRating = ratingFilter.value;
+        const selectedInterviewer = interviewerFilter.value.toLowerCase();
+        const sortBy = sortSelect.value;
+
+        let filteredRows = rows.filter(row => {
+          const role = row.cells[1].textContent.trim().toLowerCase();
+          const rating = row.cells[4].textContent.trim();
+          const interviewer = row.cells[2].textContent.trim().toLowerCase();
+
+          const roleMatch = !selectedRole || role === selectedRole;
+          const ratingMatch = !selectedRating || rating === selectedRating;
+          const interviewerMatch = !selectedInterviewer || interviewer === selectedInterviewer;
+
+          return roleMatch && ratingMatch && interviewerMatch;
+        });
+
+        if (sortBy) {
+          const columnIndex = {
+            "name": 0,
+            "role": 1,
+            "rating": 4
+          }[sortBy];
+
+          filteredRows.sort((a, b) => {
+            const textA = a.cells[columnIndex].textContent.trim().toLowerCase();
+            const textB = b.cells[columnIndex].textContent.trim().toLowerCase();
+
+            if (sortBy === "rating") {
+              return Number(textB) - Number(textA); // Descending
+            } else {
+              return textA.localeCompare(textB); // Ascending
+            }
+          });
+        }
+
+        tbody.innerHTML = "";
+        filteredRows.forEach(row => tbody.appendChild(row));
+      }
+
+      roleFilter.addEventListener("change", filterAndSort);
+      ratingFilter.addEventListener("change", filterAndSort);
+      interviewerFilter.addEventListener("change", filterAndSort);
+      sortSelect.addEventListener("change", filterAndSort);
+    });
+       </script>
+               <script src="Dmode.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Management</title>
+    <link rel="stylesheet" href="consultancies.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo">
+            <img src="logo.png" alt="Motto Systems Logo"> <!-- Replace with your logo path -->
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i> <!-- Notification bell icon -->
+                <span class="notification-count">3</span> <!-- Notification count -->
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-cog"></i> <!-- Gear icon -->
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="#profile">Profile</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#">Interviews</a></li>
+                <li><a href="#">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="#">Offer Letter</a></li>
+                <li><a href="#" class="active">Consultancies</a></li>
+                <li><a href="#">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="#">Interview Feedback</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Overview Dashboard -->
+            <section class="overview">
+                <h2>Consultancies Overview</h2>
+                <div class="statistics">
+                    <div class="stat-item">
+                        <h3>Active Consultancies</h3>
+                        <p>10</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Inactive Consultancies</h3>
+                        <p>5</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Consultancies by Service</h3>
+                        <!-- Pie chart or graph -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Consultancy List Table -->
+            <section class="consultancy-list">
+                <div class="filters">
+                    <input type="text" id="search" placeholder="Search consultancies...">
+                    <select id="service-filter">
+                        <option value="">Filter by Service</option>
+                        <option value="Recruitment">Recruitment</option>
+                        <option value="Training">Training</option>
+                        <option value="Consulting">Consulting</option>
+                    </select>
+                    <select id="status-filter">
+                        <option value="">Filter by Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <table id="consultancy-table">
+                    <thead>
+                        <tr>
+                            <th>Consultancy Name</th>
+                            <th>Contact Person</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="consultancy-list">
+                        <!-- Table rows will be inserted here dynamically -->
+                    </tbody>
+                </table>
+
+                <button class="add-consultancy" onclick="openModal()">Add Consultancy</button>
+            </section>
+
+            <!-- Add Consultancy Modal -->
+            <div class="modal" id="addConsultancyModal">
+                <div class="modal-content">
+                    <h3>Add New Consultancy</h3>
+                    <form id="consultancy-form" onsubmit="addConsultancy(event)">
+                        <label for="consultancy-name">Consultancy Name:</label>
+                        <input type="text" id="consultancy-name" required>
+
+                        <label for="contact-person">Contact Person:</label>
+                        <input type="text" id="contact-person" required>
+
+                        <label for="contact-email">Contact Email:</label>
+                        <input type="email" id="contact-email" required>
+
+                        <label for="contact-phone">Phone Number:</label>
+                        <input type="tel" id="contact-phone" required>
+
+                        <label for="service">Service Type:</label>
+                        <select id="service" required>
+                            <option value="Recruitment">Recruitment</option>
+                            <option value="Training">Training</option>
+                            <option value="Consulting">Consulting</option>
+                        </select>
+
+                        <label for="status">Status:</label>
+                        <select id="status" required>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+
+                        <button type="submit">Save Consultancy</button>
+                        <button type="button" class="close-modal" onclick="closeModal()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sample Consultancy Data
+        const consultancies = [
+            { name: 'ABC Consulting', contactPerson: 'John Smith', email: 'john@abc.com', phone: '9876543210', service: 'Recruitment', status: 'Active' },
+            { name: 'XYZ Solutions', contactPerson: 'Jane Doe', email: 'jane@xyz.com', phone: '9123456789', service: 'Consulting', status: 'Inactive' },
+            // More sample data...
+        ];
+
+        // Display Consultancies
+        function displayConsultancies(data) {
+            const tableBody = document.getElementById('consultancy-list');
+            tableBody.innerHTML = ''; // Clear table before adding new rows
+
+            data.forEach((consultancy, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${consultancy.name}</td>
+                    <td>${consultancy.contactPerson}</td>
+                    <td>${consultancy.email}</td>
+                    <td>${consultancy.phone}</td>
+                    <td>${consultancy.service}</td>
+                    <td>${consultancy.status}</td>
+                    <td>
+                        <button onclick="editConsultancy(${index})">Edit</button>
+                        <button onclick="deleteConsultancy(${index})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Add Consultancy
+        function addConsultancy(event) {
+            event.preventDefault();
+
+            const newConsultancy = {
+                name: document.getElementById('consultancy-name').value,
+                contactPerson: document.getElementById('contact-person').value,
+                email: document.getElementById('contact-email').value,
+                phone: document.getElementById('contact-phone').value,
+                service: document.getElementById('service').value,
+                status: document.getElementById('status').value,
+            };
+
+            consultancies.push(newConsultancy);
+            displayConsultancies(consultancies);
+
+            // Close modal and reset form
+            closeModal();
+            document.getElementById('consultancy-form').reset();
+        }
+
+        // Edit Consultancy (placeholder function)
+        function editConsultancy(index) {
+            alert('Edit functionality for ' + consultancies[index].name);
+        }
+
+        // Delete Consultancy
+        function deleteConsultancy(index) {
+            consultancies.splice(index, 1);
+            displayConsultancies(consultancies);
+        }
+
+        // Open Add Consultancy Modal
+        function openModal() {
+            document.getElementById('addConsultancyModal').style.display = 'block';
+        }
+
+        // Close Add Consultancy Modal
+        function closeModal() {
+            document.getElementById('addConsultancyModal').style.display = 'none';
+        }
+
+        // Filter by Service
+        document.getElementById('service-filter').addEventListener('change', function() {
+            const filteredConsultancies = consultancies.filter(consultancy => {
+                return consultancy.service.toLowerCase().includes(this.value.toLowerCase());
+            });
+            displayConsultancies(filteredConsultancies);
+        });
+
+        // Filter by Status
+        document.getElementById('status-filter').addEventListener('change', function() {
+            const filteredConsultancies = consultancies.filter(consultancy => {
+                return consultancy.status.toLowerCase().includes(this.value.toLowerCase());
+            });
+            displayConsultancies(filteredConsultancies);
+        });
+
+        // Search by Name
+        document.getElementById('search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredConsultancies = consultancies.filter(consultancy => {
+                return consultancy.name.toLowerCase().includes(searchTerm);
+            });
+            displayConsultancies(filteredConsultancies);
+        });
+
+        // Initialize with all consultancies
+        displayConsultancies(consultancies);
+    </script>
+</body>
+</html>

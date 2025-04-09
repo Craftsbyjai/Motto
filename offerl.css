@@ -1,0 +1,436 @@
+/* Reset default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    min-height: 100vh;       /* Ensure the body takes full height */
+    overflow-x: hidden;
+
+}
+
+/* Header Banner */
+.banner {
+    background-color: #f1c40f; /* Yellow color */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.search-container {
+    flex: 1;
+    text-align: center;
+}
+
+.search-container input {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notification-button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.notification-button .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.admin-button {
+    background-color: transparent; /* No background */
+    color: white;
+    border: none; /* No border */
+    cursor: pointer;
+    font-size: 20px; /* Adjust size if needed */
+    margin-left: 10px; /* Space between buttons */
+}
+
+.admin-button:hover {
+    color: #3498db; /* Change color on hover */
+}
+
+/* Admin Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it stays above */
+    overflow: hidden;
+}
+
+.dropdown a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown a i {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #2980b9;
+}
+
+.dropdown a:hover {
+    background-color: #f1f1f1;
+    color: #3498db;
+}
+
+/* Show Dropdown */
+.show {
+    display: block;
+}
+
+/* 🌙 Dark Mode Toggle Icon Style */
+.icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+}
+
+.icon i {
+    transition: opacity 0.3s ease;
+}
+
+
+/* Page Layout */
+.container {
+    display: flex;
+    margin-top: 60px; /* Ensures content is below banner */
+    width: 80%;
+    justify-content: center; /* Horizontally center the content */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50; /* Dark Blue */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 60px; /* Below the banner */
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #1a252f; /* Darker Blue */
+    font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 5px;
+    margin-left: 110px; /* Adjust for sidebar width */
+    margin-right: -140px; /* Adjust for sidebar width */
+    max-width: 3000px; /* Limit the max width of the content */
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+
+}
+
+
+/* Offer Letter Form */
+.offer-form, .offer-list {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+
+}
+
+.offer-form h2, .offer-list h2 {
+    color: #2980b9;
+    margin-bottom: 10px;
+}
+
+.offer-form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.offer-form input,
+.offer-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.offer-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.offer-form button:hover {
+    background: #1f669f;
+}
+
+/* Offer Letter List */
+.offer-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.offer-list th, .offer-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.offer-list th {
+    background: #2980b9;
+    color: white;
+}
+
+.offer-list .edit-btn,
+.offer-list .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.offer-list .edit-btn {
+    background: #27ae60;
+    color: white;
+    border-radius: 4px;
+}
+
+.offer-list .delete-btn {
+    background: #e74c3c;
+    color: white;
+    border-radius: 4px;
+}
+
+.offer-list .edit-btn:hover {
+    background: #219653;
+}
+
+.offer-list .delete-btn:hover {
+    background: #c0392b;
+}
+
+
+
+/* 🌙 DARK MODE STYLES for Offer Letter Page */
+body.dark-mode {
+    background-color: #010c18;
+    color: #e0e0e0;
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+    background-color: #152A38;
+}
+
+body.dark-mode .sidebar ul li a {
+    color: #ccc;
+}
+
+body.dark-mode .sidebar ul li a:hover,
+body.dark-mode .sidebar ul li a.active {
+    background-color: #083358;
+    color: #fff;
+}
+
+/* Admin Dropdown & Notification Dropdown */
+body.dark-mode .dropdown {
+    background-color: #152A38;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .dropdown a {
+    color: #ddd;
+}
+
+body.dark-mode .dropdown a:hover {
+    background-color: #083358;
+    color: #d1a545;
+}
+
+/* Main Content */
+body.dark-mode .main-content {
+    background-color: #010a14;
+    color: #e0e0e0;
+}
+
+/* Offer Form and List Cards */
+body.dark-mode .offer-form,
+body.dark-mode .offer-list {
+    background-color: #06111d;
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .offer-form h2,
+body.dark-mode .offer-list h2 {
+    color: #155ada;
+}
+
+body.dark-mode .offer-form label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .offer-form input,
+body.dark-mode .offer-form textarea {
+    background-color: #0e1a25;
+    border: 1px solid #2f3f50;
+    color: #e0e0e0;
+}
+
+body.dark-mode .offer-form input::placeholder,
+body.dark-mode .offer-form textarea::placeholder {
+    color: #bbb;
+}
+
+body.dark-mode .offer-form button {
+    background-color: #155ada;
+    color: white;
+}
+
+body.dark-mode .offer-form button:hover {
+    background-color: #0f4cb2;
+}
+
+/* Offer Table */
+body.dark-mode .offer-list table {
+    background-color: transparent;
+}
+
+body.dark-mode .offer-list th {
+    background-color: #152A38;
+    color: #f1f1f1;
+}
+
+body.dark-mode .offer-list td {
+    border-color: #2c3c4c;
+}
+
+/* Buttons in table */
+body.dark-mode .edit-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+body.dark-mode .edit-btn:hover {
+    background: #27ae60;
+}
+
+body.dark-mode .delete-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+body.dark-mode .delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Scrollbar */
+body.dark-mode ::-webkit-scrollbar {
+    width: 10px;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #152A38;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background-color: #083358;
+    border-radius: 10px;
+}

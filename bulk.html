@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Bulk Emails</title>
+    <link rel="stylesheet" href="bulk.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo">
+            <a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i>
+                <span class="notification-count">3</span>
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i> 
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">settings</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+                        <!-- ✅ Dark Mode Toggle Button -->
+            <div class="icon" id="darkModeToggle" title="Toggle Dark Mode">
+                <i id="moonIcon" class="fas fa-moon"></i>
+                <i id="sunIcon" class="fas fa-sun" style="display: none;"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="i3.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html" class="active">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="email-form">
+                <h2>Send Bulk Emails</h2>
+                <label for="recipient-selection">Select Recipients:</label>
+                <select id="recipient-selection">
+                    <option value="consultancies">Consultancies</option>
+                    <option value="candidates">Candidates</option>
+                    <option value="both">Both</option>
+                </select>
+
+                <label for="email-subject">Email Subject:</label>
+                <input type="text" id="email-subject" placeholder="Enter email subject...">
+                
+                <label for="email-body">Email Body:</label>
+                <textarea id="email-body" rows="8" placeholder="Write your email content here..."></textarea>
+                
+                <label for="email-attachments">Attachments:</label>
+                <input type="file" id="email-attachments" multiple>
+                
+                <label for="email-templates">Select Email Template:</label>
+                <select id="email-templates" onchange="loadTemplate()">
+                    <option value="">None</option>
+                    <option value="template1">Interview Invitation</option>
+                    <option value="template2">Job Offer</option>
+                </select>
+
+            <!-- Email History Section -->
+            <div class="email-history">
+                <h2>Email History</h2>
+                <div class="filter-container">
+                    <label for="filter-date">Date:</label>
+                    <input type="date" id="filter-date" />
+                
+                    <label for="filterStatus">Filter by Status:</label>
+                    <select id="filter-status">
+                        <option value="">All</option>
+                        <option value="Sent">Sent</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                
+                    <button class="apply-filter" onclick="filterEmails()">Apply</button>
+                    <button class="clear-filter" onclick="clearFilters()">Clear</button>
+                </div>
+                
+                                    
+                
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Recipients</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="email-history-body">
+                        <tr>
+                            <td>Feb 5, 2025</td>
+                            <td>Interview Invitation</td>
+                            <td>Consultancies</td>
+                            <td>Sent</td>
+                        </tr>
+                        <tr>
+                            <td>Jan 30, 2025</td>
+                            <td>Job Offer</td>
+                            <td>Candidates</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Toggle dropdown function
+        function toggleDropdown() {
+            var dropdown = document.getElementById("adminDropdown");
+            dropdown.classList.toggle("show");
+        
+            // Close notifications if open
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            if (notificationDropdown.classList.contains("show")) {
+                notificationDropdown.classList.remove("show");
+            }
+        }
+        
+        // Toggle notification dropdown
+        function toggleNotificationDropdown() {
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            notificationDropdown.classList.toggle("show");
+        
+            // Close admin dropdown if open
+            var adminDropdown = document.getElementById("adminDropdown");
+            if (adminDropdown.classList.contains("show")) {
+                adminDropdown.classList.remove("show");
+            }
+        }
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener("click", function(event) {
+            var isClickInsideAdmin = event.target.closest(".admin-container");
+            var isClickInsideNotification = event.target.closest(".notification-button");
+        
+            if (!isClickInsideAdmin) {
+                document.getElementById("adminDropdown").classList.remove("show");
+            }
+        
+            if (!isClickInsideNotification) {
+                document.getElementById("notificationDropdown").classList.remove("show");
+            }
+        });
+
+        function loadTemplate() {
+            var templates = {
+                "template1": {
+                    subject: "Exciting Job Opportunity at [Company Name] – Apply Now!",
+                    body: "Dear [Candidate's Name],\n\nWe hope this email finds you well. We are pleased to inform you about an exciting career opportunity at [Company Name] for the position of [Job Title]. Based on your qualifications and experience, we believe you would be a great fit for this role.\n\nPosition: [Job Title]\nLocation: [Company Address / Remote]\nExperience Required: [Number of Years]\nSalary Range: [Salary Details]\n\nWe are looking for motivated professionals who are eager to contribute their expertise to our dynamic team. If you are interested, please submit your resume by [Application Deadline].\n\nBest regards,\n[Your Name]\n[Your Position]\n[Company Name]"
+                },
+                "template2": {
+                    subject: "Invitation for Interview – [Job Title] at [Company Name]",
+                    body: "Dear [Candidate's Name],\n\nThank you for your interest in the [Job Title] position at [Company Name]. After reviewing your application, we are pleased to inform you that you have been shortlisted for an interview.\n\nInterview Details:\nDate: [Interview Date]\nTime: [Interview Time]\nLocation: [Physical Address / Online Meeting Link]\n\nPlease confirm your availability by [Confirmation Deadline]. We look forward to speaking with you.\n\nBest regards,\n[Your Name]\n[Your Position]\n[Company Name]"
+                },
+                "template3": {
+                    subject: "Congratulations! Job Offer for [Job Title] at [Company Name]",
+                    body: "Dear [Candidate's Name],\n\nWe are delighted to offer you the position of [Job Title] at [Company Name]. Your skills and experience will be a valuable addition to our team.\n\nEmployment Details:\nPosition: [Job Title]\nStart Date: [Start Date]\nSalary Package: [Salary Details]\n\nPlease review the attached offer letter for additional details. If you accept this offer, kindly sign and return it by [Response Deadline].\n\nWe look forward to welcoming you.\n\nBest regards,\n[Your Name]\n[Your Position]\n[Company Name]"
+                }
+            };
+
+            var selectedTemplate = document.getElementById("email-templates").value;
+            if (selectedTemplate in templates) {
+                document.getElementById("email-subject").value = templates[selectedTemplate].subject;
+                document.getElementById("email-body").value = templates[selectedTemplate].body;
+            } else {
+                document.getElementById("email-subject").value = "";
+                document.getElementById("email-body").value = "";
+            }
+        }
+
+        function filterEmails() {
+  const dateVal = document.getElementById("filter-date").value;
+  const statusVal = document.getElementById("filter-status").value;
+
+  const rows = document.querySelectorAll("#email-history-body tr");
+
+  rows.forEach((row) => {
+    const rowDate = new Date(row.cells[0].textContent.trim());
+    const rowStatus = row.cells[3].textContent.trim();
+
+    let isVisible = true;
+
+    if (dateVal) {
+      const selectedDate = new Date(dateVal);
+      isVisible = rowDate.toDateString() === selectedDate.toDateString();
+    }
+
+    if (statusVal && isVisible) {
+      isVisible = rowStatus === statusVal;
+    }
+
+    row.style.display = isVisible ? "" : "none";
+  });
+}
+
+function clearFilters() {
+  document.getElementById("filter-date").value = "";
+  document.getElementById("filter-status").value = "";
+  filterEmails();
+}
+
+    </script>
+        <script src="Dmode.js"></script>
+</body>
+</html>

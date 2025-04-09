@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motto Systems Recruitment Management</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">
+            <img src="logo.png" alt="Motto Systems Logo"> <!-- Replace with your logo path -->
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+	<div class="admin-container">
+    	<button class="notification-button">
+        	<i class="fas fa-bell"></i> <!-- Notification bell icon -->
+    	</button>
+    	<button class="admin-button" onclick="toggleDropdown()">
+        	<i class="fas fa-cog"></i> <!-- Gear icon -->
+    	</button>
+    	<div class="dropdown" id="adminDropdown">
+        	<a href="#profile">Profile</a>
+        	<a href="#logout">Logout</a>
+    	</div>
+	</div>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Motto Systems Recruitment</h2>
+            <ul>
+            <li><a href="i2.html">Interviews</a></li>
+            <li><a href="#">Candidates</a></li>
+            <li><a href="#">Job Descriptions</a></li>
+            <li><a href="#">Offer Letter</a></li>
+            <li><a href="#">Consultancies</a></li>
+            <li><a href="#">Send Bulk Emails</a></li>
+            <li><a href="#">Add Job Posting</a></li>
+            <li><a href="#">Interview Feedback</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Welcome to Motto Systems Recruitment</h1>
+                <p>Your journey to a fulfilling career starts here.</p>
+            </header>
+            <div class="widget-container">
+                <div class="widget" id="upcoming-interviews">
+                    <h2>📅 Upcoming Interviews</h2>
+                    <p>5</p>
+                </div>
+                <div class="widget" id="total-candidates">
+                    <h2>👥 Total Candidates</h2>
+                    <p>120</p>
+                </div>
+                <div class="widget" id="open-positions">
+                    <h2>📌 Open Positions</h2>
+                    <p>8</p>
+                </div>
+                <div class="widget" id="pending-offers">
+                    <h2>📝 Pending Offers</h2>
+                    <p>3</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("adminDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.admin-button')) {
+                var dropdowns = document.getElementsByClassName("dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

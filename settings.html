@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Management</title>
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo">
+		<a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i> <!-- Notification bell icon -->
+                <span class="notification-count">3</span> <!-- Notification count -->
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i> <!-- Profile icon -->
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">settings</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+            <!-- ✅ Dark Mode Toggle Button -->
+            <div class="icon" id="darkModeToggle" title="Toggle Dark Mode">
+                <i id="moonIcon" class="fas fa-moon"></i>
+                <i id="sunIcon" class="fas fa-sun" style="display: none;"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="i3.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="settings-content">
+
+            <!-- Security Settings -->
+            <section class="settings-section">
+                <h2>Security Settings</h2>
+
+                <div class="settings-card">
+                    <h3>Change Password</h3>
+                    <form action="#" method="POST">
+                        <label>Current Password:</label>
+                        <input type="password" name="current_password" required>
+
+                        <label>New Password:</label>
+                        <input type="password" name="new_password" required>
+
+                        <label>Confirm New Password:</label>
+                        <input type="password" name="confirm_new_password" required>
+
+                        <button type="submit">Update Password</button>
+                    </form>
+                </div>
+
+                <div class="settings-card">
+                    <h3>Manage Logged-in Devices</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Device</th>
+                                <th>Location</th>
+                                <th>Last Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Windows PC</td>
+                                <td>New York, USA</td>
+                                <td>2 hours ago</td>
+                                <td><button class="logout-btn">Log Out</button></td>
+                            </tr>
+                            <tr>
+                                <td>iPhone 14</td>
+                                <td>Los Angeles, USA</td>
+                                <td>Yesterday</td>
+                                <td><button class="logout-btn">Log Out</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Privacy Settings -->
+            <section class="settings-section">
+                <h2>Privacy Settings</h2>
+                <div class="settings-card">
+                    <h3>Delete Account</h3>
+                    <p>Deleting your account will erase all your data permanently. This action cannot be undone.</p>
+                    <button class="delete-btn">Delete My Account</button>
+                </div>
+            </section>
+
+            <!-- Backup & Data Management -->
+            <section class="settings-section">
+                <h2>Backup & Data Management</h2>
+
+                <div class="settings-card">
+                    <h3>Export Account Data</h3>
+                    <button class="export-btn">Export Data</button>
+                </div>
+
+                <div class="settings-card">
+                    <h3>Reset to Default Settings</h3>
+                    <button class="reset-btn">Reset Settings</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("adminDropdown");
+            dropdown.classList.toggle("show");
+
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            if (notificationDropdown && notificationDropdown.classList.contains("show")) {
+                notificationDropdown.classList.remove("show");
+            }
+        }
+
+        function toggleNotificationDropdown() {
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            notificationDropdown.classList.toggle("show");
+
+            var adminDropdown = document.getElementById("adminDropdown");
+            if (adminDropdown.classList.contains("show")) {
+                adminDropdown.classList.remove("show");
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            var isClickInsideAdmin = event.target.closest(".admin-container");
+            var isClickInsideNotification = event.target.closest(".notification-button");
+
+            if (!isClickInsideAdmin) {
+                document.getElementById("adminDropdown").classList.remove("show");
+            }
+
+            if (!isClickInsideNotification) {
+                var notificationDropdown = document.getElementById("notificationDropdown");
+                if (notificationDropdown) notificationDropdown.classList.remove("show");
+            }
+        });
+        </script>
+                <script src="Dmode.js"></script>
+
+</body>
+</html>

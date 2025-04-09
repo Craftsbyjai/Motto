@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Motto Systems Recruitment Management</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">
+            <a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i> <!-- Notification bell icon -->
+                <span class="notification-count">3</span> <!-- Notification count -->
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i> <!-- Profile icon -->
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">settings</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>              
+                        <!-- ✅ Dark Mode Toggle Button -->
+            <div class="icon" id="darkModeToggle" title="Toggle Dark Mode">
+                <i id="moonIcon" class="fas fa-moon"></i>
+                <i id="sunIcon" class="fas fa-sun" style="display: none;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="i3.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+
+            <section class="profile-section">
+                <h2>Profile Details</h2>
+                <div class="profile-info">
+                    <img src="profile.png" alt="Profile Picture" class="profile-pic">
+                </div>
+                 <form id="profileForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="idNumber">ID Number:</label>
+                    <input type="text" id="idNumber" name="idNumber" required>
+
+                    <label for="bio">Bio:</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+
+                    <button type="submit">Update Profile</button>
+                </form>
+
+                <div class="profile-completion">
+                    <h3>Profile Completion</h3>
+                    <div class="completion-bar">
+                        <div class="completion-fill"></div>
+                    </div>
+                    <p id="completionText">0% Complete</p>
+                </div>
+            </section>
+
+            <section class="help-support">
+                <h2>Help & Support</h2>
+                <p>If you need assistance, please refer to our <a href="#">documentation</a> or <a href="#">contact support</a>.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById("profileForm").addEventListener("input", function() {
+            let inputs = document.querySelectorAll("#profileForm input, #profileForm select, #profileForm textarea");
+            let filledCount = 0, totalCount = inputs.length;
+
+            inputs.forEach(input => {
+                if (input.value.trim() !== "") filledCount++;
+            });
+
+            let completionPercentage = Math.round((filledCount / totalCount) * 100);
+            document.querySelector(".completion-fill").style.width = completionPercentage + "%";
+            document.getElementById("completionText").innerText = completionPercentage + "% Complete";
+        });
+
+        function toggleDropdown() {
+            document.getElementById("adminDropdown").classList.toggle("show");
+        }
+
+        function toggleNotificationDropdown() {
+            document.getElementById("notificationDropdown").classList.toggle("show");
+        }
+    </script>
+        <script src="Dmode.js"></script>
+    </body>
+</html>

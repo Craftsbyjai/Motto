@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Management</title>
+    <link rel="stylesheet" href="c2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="logo">
+		<a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button" onclick="toggleNotificationDropdown()">
+                <i class="fas fa-bell"></i> <!-- Notification bell icon -->
+                <span class="notification-count">3</span> <!-- Notification count -->
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i> <!-- Profile icon -->
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="#profile">Profile</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <div class="dropdown" id="notificationDropdown">
+                <a href="#">New application received</a>
+                <a href="#">Interview scheduled for John Doe</a>
+                <a href="#">3 candidates pending review</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="interview.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Candidate Management</h1>
+                <p>Manage your candidates and their interview process.</p>
+            </header>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <label for="role-filter">Filter by Role:</label>
+                <select id="role-filter">
+                    <option value="all">All Roles</option>
+                    <option value="developer">Developer</option>
+                    <option value="analyst">Analyst</option>
+                    <option value="hr">HR</option>
+                    <option value="manager">Manager</option>
+                </select>
+
+                <label for="status-filter">Filter by Status:</label>
+                <select id="status-filter">
+                    <option value="all">All Statuses</option>
+                    <option value="interviewed">Interviewed</option>
+                    <option value="pending">Pending</option>
+                    <option value="offered">Offered</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+
+                <label for="experience-filter">Filter by Experience:</label>
+                <select id="experience-filter">
+                    <option value="all">All Experience Levels</option>
+                    <option value="junior">Junior</option>
+                    <option value="mid">Mid-level</option>
+                    <option value="senior">Senior</option>
+                </select>
+            </div>
+
+            <!-- Add Candidate Button -->
+            <div class="button-container">
+                <button class="schedule-btn">+ Add Candidate</button>
+            </div>
+
+            <!-- Candidate Table -->
+            <table class="candidate-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Resume</th>
+                        <th>Status</th>
+                        <th>Position</th>
+                        <th>Interview Date</th>
+                        <th>Experience</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alice Johnson</td>
+                        <td>alice@example.com</td>
+                        <td>+1 234 567 890</td>
+                        <td><a href="#">View Resume</a></td>
+                        <td>Interviewed</td>
+                        <td>Software Engineer</td>
+                        <td>Feb 5, 2025</td>
+                        <td>3 Years</td>
+                        <td><button class="view-details">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Michael Brown</td>
+                        <td>michael@example.com</td>
+                        <td>+1 987 654 321</td>
+                        <td><a href="#">View Resume</a></td>
+                        <td>Pending</td>
+                        <td>Data Analyst</td>
+                        <td>Jan 30, 2025</td>
+                        <td>2 Years</td>
+                        <td><button class="view-details">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    
+    <script>
+        function toggleDropdown() {
+            document.getElementById("adminDropdown").classList.toggle("show");
+        }
+
+        function toggleNotificationDropdown() {
+            document.getElementById("notificationDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdowns if the user clicks outside of them
+        window.onclick = function(event) {
+            if (!event.target.matches('.admin-button') && !event.target.matches('.notification-button')) {
+                var dropdowns = document.getElementsByClassName("dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

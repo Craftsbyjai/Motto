@@ -1,0 +1,176 @@
+/* CENTRALIZED DARK MODE STYLES FOR MOTTO SYSTEMS */
+/* Applies to: Home, Interview, Candidates, Offer Letter, Bulk Emails, Profile, Settings */
+/* Banner styles are excluded intentionally */
+
+/* General Dark Theme */
+body.dark-mode {
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+    background-color: #1c2533;
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar a {
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar a:hover,
+body.dark-mode .sidebar a.active {
+    background-color: #2a3444;
+}
+
+/* Main Content Area */
+body.dark-mode .main-content {
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+}
+
+/* Inputs and Search Bar */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="date"],
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #2c2c3e;
+    color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+/* Dropdown */
+body.dark-mode .dropdown {
+    background-color: #2d3748;
+}
+
+body.dark-mode .dropdown a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .dropdown a:hover {
+    background-color: #3a3f4a;
+    color: #4ea3ff;
+}
+
+/* Widget Boxes */
+body.dark-mode .widget {
+    background-color: #2c2c3e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .widget h2 {
+    color: #4ea3ff;
+}
+
+body.dark-mode .widget p {
+    color: #f5f5f5;
+}
+
+/* Help & Support Section */
+body.dark-mode .help-support {
+    background-color: #2c2c3e;
+    color: #ddd;
+}
+
+body.dark-mode .help-support a {
+    color: #4ea3ff;
+}
+
+/* Buttons */
+body.dark-mode button,
+body.dark-mode .btn {
+    background-color: #3a3f51;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+body.dark-mode button:hover,
+body.dark-mode .btn:hover {
+    background-color: #4e5670;
+}
+
+/* Table Styles */
+body.dark-mode table {
+    background-color: #2e2e3d;
+    color: #ffffff;
+    border-collapse: collapse;
+}
+
+body.dark-mode table th,
+body.dark-mode table td {
+    border: 1px solid #444;
+    padding: 8px;
+}
+
+body.dark-mode table th {
+    background-color: #3b3b4f;
+}
+
+/* Links */
+body.dark-mode a {
+    color: #4ea3ff;
+}
+
+/* Scrollbar */
+body.dark-mode ::-webkit-scrollbar {
+    width: 10px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #1e1e2f;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 8px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Page Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #e0e0e0;
+}
+
+/* File Upload & Resume Cards */
+body.dark-mode .resume-card,
+body.dark-mode .file-upload-box {
+    background-color: #2c2c3e;
+    border: 1px dashed #555;
+    color: #e0e0e0;
+}
+
+/* Calendar Section */
+body.dark-mode .fc,
+body.dark-mode .calendar-section {
+    background-color: #2c2c3e;
+    color: #f5f5f5;
+}
+
+body.dark-mode .fc-daygrid-day-number {
+    color: #ddd;
+}
+
+body.dark-mode .fc-event {
+    background-color: #4ea3ff;
+    color: #111;
+}
+
+/* Profile / Settings Cards */
+body.dark-mode .profile-card,
+body.dark-mode .settings-section {
+    background-color: #2c2c3e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .settings-section h3 {
+    color: #f1f1f1;
+}

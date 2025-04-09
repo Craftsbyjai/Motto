@@ -1,0 +1,632 @@
+/* Dark Mode Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2f3640; /* Dark background */
+    color: #e0e0e0; /* Light text for dark mode */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: #3498db; /* Lighter blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #f39c12; /* Hover effect with gold */
+}
+
+/* Banner */
+.banner {
+    background-color: #f39c12; /* Keep yellow for the banner */
+    color: #333; /* Dark text for visibility */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.banner .logo img {
+    height: 40px;
+}
+
+.search-container input {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #555;
+    color: #fff;
+}
+
+.admin-container button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.admin-container button:hover {
+    color: #f39c12;
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+    font-size: 20px;
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.theme-toggle:hover {
+    color: #f39c12;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #1a252f; /* Darker background for sidebar */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #1a252f; /* Darker hover effect */
+    font-weight: bold;
+}
+
+/* Main Content */
+.container {
+    display: flex;
+    margin-top: 60px;
+    margin-left: 250px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    color: #e0e0e0;
+}
+
+h1, h2 {
+    color: #f1c40f; /* Yellow color for headings */
+}
+
+/* Profile Section */
+.profile-section {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-section input,
+.profile-section select,
+.profile-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: white;
+    border-radius: 4px;
+}
+
+.profile-section button {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-section button:hover {
+    background-color: #3498db;
+}
+
+/* Profile Completion Bar */
+.completion-bar {
+    background-color: #444;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+}
+
+.completion-fill {
+    background-color: #2980b9;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* Help & Support Section */
+.help-support {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.help-support a {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+.help-support a:hover {
+    color: #fff;
+}
+
+/* Settings Page */
+.settings-section {
+    background: #444;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-card {
+    background: #555;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+.logout-btn {
+    background-color: #ff9800;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+}
+
+.export-btn,
+.reset-btn {
+    background-color: #17a2b8;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+}
+
+table th {
+    background-color: #2980b9;
+    color: white;
+}
+
+table td {
+    background-color: #333;
+    color: white;
+}
+
+/* Notification Dropdown */
+#notificationDropdown {
+    background-color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#notificationDropdown a {
+    color: #fff;
+}
+
+#notificationDropdown a:hover {
+    background-color: #444;
+}
+
+/* Admin Dropdown */
+#adminDropdown {
+    background-color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#adminDropdown a {
+    color: #fff;
+}
+
+#adminDropdown a:hover {
+    background-color: #444;
+}
+
+/* Form Controls */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+    background-color: #555;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: auto;
+}
+
+input[type="submit"]:hover {
+    background-color: #3498db;
+}
+
+/* Modal/Popup */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    margin: 15% auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    color: #f39c12;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.modal button {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.modal button:hover {
+    background-color: #3498db;
+}
+
+/* Alerts & Notifications */
+.alert {
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.alert.success {
+    background-color: #2ecc71;
+}
+
+.alert.info {
+    background-color: #3498db;
+}
+
+.alert.warning {
+    background-color: #f39c12;
+}
+
+.alert a {
+    color: white;
+    text-decoration: underline;
+}
+
+.alert a:hover {
+    color: #f39c12;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+}
+
+table th {
+    background-color: #2980b9;
+    color: white;
+}
+
+table td {
+    background-color: #333;
+    color: white;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.pagination a {
+    color: #f39c12;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.pagination a:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+.pagination .active {
+    background-color: #2980b9;
+    color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #1a252f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #444;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #3498db;
+}
+
+::-webkit-scrollbar-track {
+    background: #2f3640;
+}
+
+/* Custom Form Radio Buttons */
+input[type="radio"] {
+    background-color: #555;
+    color: white;
+    border: 1px solid #444;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked {
+    background-color: #2980b9;
+}
+
+/* Custom Form Checkbox */
+input[type="checkbox"] {
+    background-color: #555;
+    color: white;
+    border: 1px solid #444;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #2980b9;
+}
+
+/* Custom Select Dropdown */
+select {
+    background-color: #555;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Responsive Design for Dark Mode */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+}

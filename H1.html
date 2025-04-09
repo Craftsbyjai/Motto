@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motto Systems Recruitment Management</title>
+    <link rel="stylesheet" href="H1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">
+            <a href="H1.html"><img src="logo.png"></a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="admin-container">
+            <button class="notification-button">
+                <i class="fas fa-bell"></i>
+                <span class="notification-count">3</span>
+            </button>
+            <button class="admin-button" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown" id="adminDropdown">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">Settings</a>
+                <a href="#logout">Logout</a>
+            </div>
+            <!-- ✅ Dark Mode Toggle Button -->
+            <div class="icon" id="darkModeToggle" title="Toggle Dark Mode">
+                <i id="moonIcon" class="fas fa-moon"></i>
+                <i id="sunIcon" class="fas fa-sun" style="display: none;"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="i3.html">Interviews</a></li>
+                <li><a href="c2.html">Candidates</a></li>
+                <li><a href="#">Job Descriptions</a></li>
+                <li><a href="offerl.html">Offer Letter</a></li>
+                <li><a href="con.html">Consultancies</a></li>
+                <li><a href="bulk.html">Send Bulk Emails</a></li>
+                <li><a href="#">Add Job Posting</a></li>
+                <li><a href="feedback.html">Interview Feedback</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Welcome to Motto Systems Recruitment</h1>
+                <p>Your journey to a fulfilling career starts here.</p>
+            </header>
+
+            <div class="widget-container">
+                <div class="widget" id="upcoming-interviews">
+                    <h2>📅 Upcoming Interviews</h2>
+                    <p>5</p>
+                </div>
+                <div class="widget" id="total-candidates">
+                    <h2>👥 Total Candidates</h2>
+                    <p>120</p>
+                </div>
+                <div class="widget" id="open-positions">
+                    <h2>📌 Open Positions</h2>
+                    <p>8</p>
+                </div>
+                <div class="widget" id="pending-offers">
+                    <h2>📝 Pending Offers</h2>
+                    <p>3</p>
+                </div>
+            </div>
+
+            <section class="help-support">
+                <h2>Help & Support</h2>
+                <p>If you need assistance, please refer to our <a href="#">documentation</a> or <a href="#">contact support</a>.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Dropdown Scripts -->
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("adminDropdown");
+            dropdown.classList.toggle("show");
+
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            if (notificationDropdown && notificationDropdown.classList.contains("show")) {
+                notificationDropdown.classList.remove("show");
+            }
+        }
+
+        function toggleNotificationDropdown() {
+            var notificationDropdown = document.getElementById("notificationDropdown");
+            notificationDropdown.classList.toggle("show");
+
+            var adminDropdown = document.getElementById("adminDropdown");
+            if (adminDropdown.classList.contains("show")) {
+                adminDropdown.classList.remove("show");
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            var isClickInsideAdmin = event.target.closest(".admin-container");
+            var isClickInsideNotification = event.target.closest(".notification-button");
+
+            if (!isClickInsideAdmin) {
+                document.getElementById("adminDropdown").classList.remove("show");
+            }
+
+            if (!isClickInsideNotification) {
+                var notificationDropdown = document.getElementById("notificationDropdown");
+                if (notificationDropdown) notificationDropdown.classList.remove("show");
+            }
+        });
+</script>
+<script src="Dmode.js"></script>
+</body>
+</html>

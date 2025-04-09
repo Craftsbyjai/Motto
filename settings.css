@@ -1,0 +1,434 @@
+/* Reset default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Banner */
+.banner {
+    background-color: #f1c40f; /* Yellow color */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.search-container {
+    flex: 1;
+    text-align: center;
+}
+
+.search-container input {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notification-button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.notification-button .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.admin-button {
+    background-color: transparent; /* No background */
+    color: white;
+    border: none; /* No border */
+    cursor: pointer;
+    font-size: 20px; /* Adjust size if needed */
+    margin-left: 10px; /* Space between buttons */
+}
+
+.admin-button:hover {
+    color: #3498db; /* Change color on hover */
+}
+
+/* Admin Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it stays above */
+    overflow: hidden;
+}
+
+.dropdown a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown a i {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #2980b9;
+}
+
+.dropdown a:hover {
+    background-color: #f1f1f1;
+    color: #3498db;
+}
+
+/* Show Dropdown */
+.show {
+    display: block;
+}
+
+/* 🌙 Dark Mode Toggle Icon Style */
+.icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+}
+
+.icon i {
+    transition: opacity 0.3s ease;
+}
+
+
+/* Page Layout */
+.container {
+    display: flex;
+    margin-top: 60px; /* Ensures content is below banner */
+    margin-left: 250px; /* Ensures sidebar doesn't overlap */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50; /* Dark Blue */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 60px; /* Below the banner */
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #1a252f; /* Darker Blue */
+    font-weight: bold;
+}
+  
+  /* === Main Content === */
+  .settings-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+  }
+  
+  /* === Section Styling === */
+  .settings-section {
+    margin-bottom: 40px;
+  }
+  
+  .settings-section h2 {
+    color: #1e3a5f;
+    margin-bottom: 20px;
+    border-left: 4px solid #1e3a5f;
+    padding-left: 10px;
+  }
+  
+  /* === Settings Cards === */
+  .settings-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .settings-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .settings-card form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 500;
+  }
+  
+  .settings-card input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .settings-card button {
+    background-color: #2d63aa;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .settings-card button:hover {
+    background-color: #294e77;
+  }
+  
+  /* === Table for Devices === */
+  .settings-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .settings-card th,
+  .settings-card td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  /* Specific button colors overriding the default */
+.settings-card .logout-btn {
+    background-color: #c0392b;
+}
+.settings-card .logout-btn:hover {
+    background-color: #a93226;
+}
+
+.settings-card .delete-btn {
+    background-color: #e74c3c;
+}
+.settings-card .delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.settings-card .export-btn {
+    background-color: #2ecc71;
+}
+.settings-card .export-btn:hover {
+    background-color: #27ae60;
+}
+
+.settings-card .reset-btn {
+    background-color: #1e3a5f;
+}
+.settings-card .reset-btn:hover {
+    background-color: #294e77;
+}
+
+  
+  /* Scrollbar for main content */
+  .settings-content::-webkit-scrollbar {
+    width: 8px;
+  }
+  .settings-content::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  
+
+
+
+  /* =============================== */
+/* 🌙 Dark Mode Styles - Settings */
+/* =============================== */
+body.dark-mode {
+    background-color: #010c18;
+    color: #e0e0e0;
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+    background-color: #152A38;
+}
+
+body.dark-mode .sidebar ul li a {
+    color: #ccc;
+}
+
+body.dark-mode .sidebar ul li a:hover,
+body.dark-mode .sidebar ul li a.active {
+    background-color: #083358;
+    color: #fff;
+}
+
+/* Dropdown */
+body.dark-mode .dropdown {
+    background-color: #152A38;
+}
+
+body.dark-mode .dropdown a {
+    color: #ddd;
+}
+
+body.dark-mode .dropdown a:hover {
+    background-color: #083358;
+    color: #d1a545;
+}
+
+/* Main Content Area */
+body.dark-mode .settings-content {
+    background-color: #010a14;
+}
+
+/* Settings Sections */
+body.dark-mode .settings-section h2 {
+    color: #d1a545;
+    border-left-color: #d1a545;
+}
+
+/* Cards */
+body.dark-mode .settings-card {
+    background-color: #06111d;
+    border: 1px solid #1c2b38;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .settings-card h3 {
+    color: #f1f1f1;
+}
+
+body.dark-mode .settings-card form label {
+    color: #ccc;
+}
+
+body.dark-mode .settings-card input[type="password"] {
+    background-color: #0f1b29;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+/* Table in Manage Devices */
+body.dark-mode .settings-card table {
+    background-color: #0f1b29;
+    color: #ccc;
+    border-color: #1c2b38;
+}
+
+body.dark-mode .settings-card th,
+body.dark-mode .settings-card td {
+    border-color: #1c2b38;
+}
+
+/* Buttons */
+body.dark-mode .settings-card button {
+    color: white;
+}
+
+/* Logout button */
+body.dark-mode .logout-btn {
+    background-color: #a93226;
+}
+body.dark-mode .logout-btn:hover {
+    background-color: #922b21;
+}
+
+/* Delete button */
+body.dark-mode .delete-btn {
+    background-color: #b03a2e;
+}
+body.dark-mode .delete-btn:hover {
+    background-color: #943126;
+}
+
+/* Export button */
+body.dark-mode .export-btn {
+    background-color: #27ae60;
+}
+body.dark-mode .export-btn:hover {
+    background-color: #1e8449;
+}
+
+/* Reset button */
+body.dark-mode .reset-btn {
+    background-color: #1b4f72;
+}
+body.dark-mode .reset-btn:hover {
+    background-color: #154360;
+}
+
+/* Scrollbar */
+body.dark-mode .settings-content::-webkit-scrollbar-thumb {
+    background-color: #444;
+}
